@@ -25,7 +25,7 @@
 
 I2C i2c(PTD9, PTD8);
 static int m_addr = FXOS8700CQ_SLAVE_ADDR1;
-static uint8_t sdata[2], res[6];
+static uint8_t data[2], res[6];
 static int16_t acc16;
 
 // A buffer holding the last 200 sets of 3-channel values
@@ -54,10 +54,10 @@ void FXOS8700CQ_writeRegs(uint8_t *data, int len)
 TfLiteStatus SetupAccelerometer(tflite::ErrorReporter *error_reporter)
 {
 	// Enable the FXOS8700Q
-	FXOS8700CQ_readRegs(FXOS8700Q_CTRL_REG1, &sdata[1], 1);
-	sdata[1] |= 0x01;
-	sdata[0] = FXOS8700Q_CTRL_REG1;
-	FXOS8700CQ_writeRegs(sdata, 2);
+	FXOS8700CQ_readRegs(FXOS8700Q_CTRL_REG1, &data[1], 1);
+	data[1] |= 0x01;
+	data[0] = FXOS8700Q_CTRL_REG1;
+	FXOS8700CQ_writeRegs(data, 2);
 	return kTfLiteOk;
 }
 

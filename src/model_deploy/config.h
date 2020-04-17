@@ -34,4 +34,4 @@ struct Config
 };
 
 Config config;
-#endif // CONFIG_H
+#endif // CONFIG_H_
